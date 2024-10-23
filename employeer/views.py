@@ -10,3 +10,6 @@ def empLogin(requests):
         return render(requests,'employeer/empLogin.html',{'title':'Employeer Login'})
     else:
         pass
+
+def newFunc(requests):
+    pass
