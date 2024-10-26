@@ -7,4 +7,5 @@ urlpatterns = [
     path('',views.homePage,name='home'),
     path('seekerDashboard',views.seekerDashboard,name='seekerdashboard'),
     path('login',views.seekerLogin,name='seekerLogin'),
+    path('register',views.seekerRegister,name='register'),
 ]

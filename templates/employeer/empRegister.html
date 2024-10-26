@@ -113,6 +113,11 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="input-group">
+                    <label for="username">Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
                 </div>
@@ -120,10 +125,11 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit">Login</button>
-                <p class="signup-link">Don't have an account? <a href="/employeer/register">Sign up</a></p>
+                <button type="submit">Register</button>
+                <p class="signup-link">Already have an account? <a href="/employeer/login">Sign in</a></p>
             </form>
         </div>
     </div>
 </body>
 </html>
+
