@@ -3,11 +3,18 @@ from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Ski
 from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job
 # Create your views here.
 def homePage(request):
-    return render(request,'jobseeker/home.html',{'title':'Home Page'})
+    return render(request,'home.html')
+
+def aboutPage(request):
+    return render(request,'about.html')
+
+def contactPage(request):
+    return render(request,'contact.html')
+
 
 def seekerLogin(request):
     if request.method == 'GET':
-        return render(request,'jobseeker/seekerLogin.html',{'title':'Seeker Login'})
+        return render(request,'login.html')
     else:
         pass
 
