@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from common_tables.models import Users,Skills,Employeers,Jobs,JobRequirements,JobApplications,JobSeeker,JobSeekerSkills,SavedJobs
+from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Skill
+from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job
 from django.http import HttpResponse
 # Create your views here.
 def empDashboard(request):

@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from common_tables.models import Users,Skills,Employeers,Jobs,JobRequirements,JobApplications,JobSeeker,JobSeekerSkills,SavedJobs
+from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Skill
+from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job
 # Create your views here.
 def homePage(request):
     return render(request,'jobseeker/home.html',{'title':'Home Page'})
