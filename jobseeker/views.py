@@ -1,14 +1,21 @@
 from django.shortcuts import render
-from common_tables.models import Users,Skills,Employeers,Jobs,JobRequirements,JobApplications,JobSeeker,JobSeekerSkills,SavedJobs
+from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Skill
+from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job
 # Create your views here.
-def homePage(requests):
-    return render(requests,'jobseeker/home.html',{'title':'Home Page'})
+def homePage(request):
+    return render(request,'jobseeker/home.html',{'title':'Home Page'})
 
-def seekerLogin(requests):
-    if requests.method == 'GET':
-        return render(requests,'jobseeker/seekerLogin.html',{'title':'Seeker Login'})
+def seekerLogin(request):
+    if request.method == 'GET':
+        return render(request,'jobseeker/seekerLogin.html',{'title':'Seeker Login'})
     else:
         pass
 
-def seekerDashboard(requests):
-    return render(requests,'jobseeker/seekerdashboard.html',{'title':'Seeker Dashboard'})
+def seekerRegister(request):
+    if request.method == "GET":
+        return render(request,'jobseeker/seekerRegister.html',{'title':'Seeker Register'})
+    else:
+        pass
+    
+def seekerDashboard(request):
+    return render(request,'jobseeker/seekerdashboard.html',{'title':'Seeker Dashboard'})
