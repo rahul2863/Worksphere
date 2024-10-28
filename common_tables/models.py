@@ -19,7 +19,7 @@ class Users(models.Model):
     phn_no = models.CharField(max_length=10)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     address = models.TextField()
-    profile_complete = models.BooleanField()
+    profile_complete = models.BooleanField(default=False)
     last_login = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -132,9 +132,6 @@ class SavedJobs(models.Model):
 
     class Meta:
         db_table = "SavedJobs"
-
-
-
 
 
 class JobApplications(models.Model):
