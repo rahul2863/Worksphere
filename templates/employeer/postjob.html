@@ -1,0 +1,116 @@
+{%extends '../home.html'%}
+
+{%block content%}
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="/jobseeker/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+            <h1 class="m-0 text-primary">JobEntry</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/jobseeker/" class="nav-item nav-link active">Home</a>
+                <a href="/jobseeker/about" class="nav-item nav-link">About</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="job-list.html" class="dropdown-item">Job List</a>
+                        <a href="job-detail.html" class="dropdown-item">Job Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="category.html" class="dropdown-item">Job Category</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404</a>
+                    </div>
+                </div>
+                <a href="/jobseeker/contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid py-5 bg-dark page-header mb-5">
+        <div class="container my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Post Jobs</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item"><a href="/jobseeker/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Post Jobs</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Form Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <form action="/submit-job" method="POST" class="job-post-form">
+        
+                <!-- Job Title -->
+                <div class="form-group mb-3">
+                    <label for="jobTitle" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
+                </div>
+        
+                <!-- Job Responsibility -->
+                <div class="form-group mb-3">
+                    <label for="jobResponsibility" class="form-label">Job Responsibility</label>
+                    <textarea class="form-control" id="jobResponsibility" name="jobResponsibility" rows="4" placeholder="Describe job responsibilities" required></textarea>
+                </div>
+        
+                <!-- Qualifications -->
+                <div class="form-group mb-3">
+                    <label for="qualifications" class="form-label">Qualifications</label>
+                    <textarea class="form-control" id="qualifications" name="qualifications" rows="3" placeholder="List required qualifications" required></textarea>
+                </div>
+        
+                <!-- Salary Range -->
+                <div class="form-group mb-3">
+                    <label for="salaryRange" class="form-label">Salary Range</label>
+                    <div class="d-flex">
+                        <input type="number" class="form-control me-2" id="salaryFrom" name="salaryFrom" placeholder="From" required>
+                        <input type="number" class="form-control" id="salaryTo" name="salaryTo" placeholder="To" required>
+                    </div>
+                </div>
+        
+                <!-- Vacancy -->
+                <div class="form-group mb-3">
+                    <label for="vacancy" class="form-label">Vacancy</label>
+                    <input type="number" class="form-control" id="vacancy" name="vacancy" placeholder="Number of positions available" required>
+                </div>
+        
+                <!-- Location -->
+                <div class="form-group mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Job location" required>
+                </div>
+        
+                <!-- Job Type -->
+                <div class="form-group mb-3">
+                    <label for="jobType" class="form-label">Job Type</label>
+                    <select class="form-control" id="jobType" name="jobType" required>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Contract">Contract</option>
+                    </select>
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary mt-4">Post Job</button>
+            </form>
+        </div>
+    </div>
+    <!-- Form End -->
+{%endblock%}

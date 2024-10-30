@@ -26,5 +26,5 @@ def empRegister(request):
         print(password)
         return render(request,'employeer/sample.html',{'name':name,'email':email,'password':password})
 
-def newFunc(request):
-    pass
+def postJob(request):
+    return render(request,'employeer/postJob.html')
