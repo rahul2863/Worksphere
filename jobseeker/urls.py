@@ -7,7 +7,7 @@ urlpatterns = [
     path('seekerDashboard',views.seekerDashboard,name='seekerdashboard'),
     path('login',views.seekerLogin,name='seekerLogin'),
     path('register',views.seekerRegister,name='register'),
-
+    path('job-list',views.joblists,name='job-list'),
 
     #Common functionalities for all
     path('',views.homePage,name='home'),

@@ -11,6 +11,8 @@ def aboutPage(request):
 def contactPage(request):
     return render(request,'contact.html')
 
+def joblists(request):
+    return render(request,'job-list.html')
 
 def seekerLogin(request):
     if request.method == 'GET':
