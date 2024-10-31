@@ -1,5 +1,5 @@
 from django import forms
-from .models import Job
+from .models import Job,User
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -29,3 +29,27 @@ class JobPostForm(forms.ModelForm):
         self.fields['job_type'].widget.attrs.update({'class': 'form-control'})
 
 
+class RegisterForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = [
+            'name', 'email', 'password',
+            'role','phone_number', 'profile_image', 'address'
+        ]
+
+    def __init__(self,*args,**kwargs):
+        super(RegisterForm, self).__init__(*args,**kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_class = 'user-register'  # Add custom form class if needed
+        self.helper.add_input(Submit('submit', 'Register', css_class="btn-primary mt-4 px-5"))
+
+        # Add placeholder and class for each field
+        self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter Username'})
+        self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter Email'})
+        self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter password'})
+        self.fields['role'].widget.attrs.update({'class': 'form-control', 'placeholder': 'role'})
+        self.fields['phone_number'].widget.attrs.update({'class': 'form-control', 'placeholder': 'phone number'})
+        self.fields['profile_image'].widget.attrs.update({'class': 'form-control'})
+        self.fields['address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'address'})

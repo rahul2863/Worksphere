@@ -6,27 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
         <div class="login-form">
-            <h2>{{title}}</h2>
+            {% load crispy_forms_tags %}
             <form method="post">
                 {% csrf_token %}
-                <div class="input-group">
-                    <label for="username">Email</label>
-                    <input type="text" id="email" name="email" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Register</button>
+                {% crispy form %}
                 <p class="signup-link">Already have an account? <a href="/employeer/login">Sign in</a></p>
             </form>
         </div>

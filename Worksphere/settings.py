@@ -138,6 +138,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Add paths to your app's static directories
 ]
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
 # Debug mode (set to False in production)
 DEBUG = True  # Set to False in production
 
