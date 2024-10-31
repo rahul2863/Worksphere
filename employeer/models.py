@@ -18,21 +18,29 @@ class EmployerProfile(models.Model):
 
 class Job(models.Model):
     job_id = models.AutoField(primary_key=True)
-    employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE)
+    employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE, default=1)
     job_title = models.CharField(max_length=100)
     job_description = models.TextField()
-    #job_type ENUM(data type in sql)
-    job_type = models.CharField(max_length=20, choices=[('Full-time', 'Full-time'), ('Part-time', 'Part-time')])
-    salary_range = models.CharField(max_length=50)
+    qualifications = models.TextField(default="Screw Qualifications but can you cook?")
+    vacancy = models.IntegerField(default=0)
+    
+    # Salary range fields
+    salary_from = models.BigIntegerField()
+    salary_to = models.BigIntegerField()
+    
     location = models.CharField(max_length=100)
     posted_at = models.DateTimeField(auto_now_add=True)
-    #status ENUM(data type in sql)
+    
+    # Job type and status
+    job_type = models.CharField(max_length=20, choices=[('Full-time', 'Full-time'), ('Part-time', 'Part-time'), ('Remote', 'Remote'), ('Contract', 'Contract')])
     status = models.CharField(max_length=10, choices=[('Open', 'Open'), ('Closed', 'Closed')], default='Open')
+    
     deleted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "job"
 
+    
 class JobApplications(models.Model):
     application_id = models.AutoField(primary_key=True)
     seeker = models.ForeignKey('jobseeker.JobSeekerProfile', on_delete=models.CASCADE)  # Foreign key to JobSeekerProfile

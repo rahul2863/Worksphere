@@ -53,63 +53,14 @@
 
 
     <!-- Form Start -->
+    {% load crispy_forms_tags %}
     <div class="container-xxl py-5">
         <div class="container">
-            <form action="/submit-job" method="POST" class="job-post-form">
-        
-                <!-- Job Title -->
-                <div class="form-group mb-3">
-                    <label for="jobTitle" class="form-label">Job Title</label>
-                    <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
-                </div>
-        
-                <!-- Job Responsibility -->
-                <div class="form-group mb-3">
-                    <label for="jobResponsibility" class="form-label">Job Responsibility</label>
-                    <textarea class="form-control" id="jobResponsibility" name="jobResponsibility" rows="4" placeholder="Describe job responsibilities" required></textarea>
-                </div>
-        
-                <!-- Qualifications -->
-                <div class="form-group mb-3">
-                    <label for="qualifications" class="form-label">Qualifications</label>
-                    <textarea class="form-control" id="qualifications" name="qualifications" rows="3" placeholder="List required qualifications" required></textarea>
-                </div>
-        
-                <!-- Salary Range -->
-                <div class="form-group mb-3">
-                    <label for="salaryRange" class="form-label">Salary Range</label>
-                    <div class="d-flex">
-                        <input type="number" class="form-control me-2" id="salaryFrom" name="salaryFrom" placeholder="From" required>
-                        <input type="number" class="form-control" id="salaryTo" name="salaryTo" placeholder="To" required>
-                    </div>
-                </div>
-        
-                <!-- Vacancy -->
-                <div class="form-group mb-3">
-                    <label for="vacancy" class="form-label">Vacancy</label>
-                    <input type="number" class="form-control" id="vacancy" name="vacancy" placeholder="Number of positions available" required>
-                </div>
-        
-                <!-- Location -->
-                <div class="form-group mb-3">
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" name="location" placeholder="Job location" required>
-                </div>
-        
-                <!-- Job Type -->
-                <div class="form-group mb-3">
-                    <label for="jobType" class="form-label">Job Type</label>
-                    <select class="form-control" id="jobType" name="jobType" required>
-                        <option value="Full-Time">Full-Time</option>
-                        <option value="Part-Time">Part-Time</option>
-                        <option value="Remote">Remote</option>
-                        <option value="Contract">Contract</option>
-                    </select>
-                </div>
-        
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary mt-4">Post Job</button>
-            </form>
+            <form method="POST" class="job-post-form">
+                {% csrf_token %}
+                {% crispy form %}
+                <!-- <button type="submit" class="btn btn-primary mt-4">Post Job</button> -->
+            </form>            
         </div>
     </div>
     <!-- Form End -->

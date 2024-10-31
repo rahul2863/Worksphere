@@ -391,3 +391,7 @@
     padding-right: 0;
     border-right: none;
 }
+
+.job-post-form{
+    margin-bottom: 1.5rem; /* Adjust the value as needed */
+}
