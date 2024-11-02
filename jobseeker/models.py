@@ -11,7 +11,7 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    profile_image = models.URLField(blank=True, null=True)
+    profile_image = models.ImageField(upload_to='Images/',default='abc.jpg')
     address = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
