@@ -21,6 +21,9 @@ class User(models.Model):
     class Meta:
         db_table = "user" 
 
+    def __str__(self):
+        return self.name
+
 class JobSeekerProfile(models.Model):
     seeker = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     resume = models.URLField()
@@ -34,6 +37,7 @@ class JobSeekerProfile(models.Model):
 
     class Meta:
         db_table = "job_seeker_profile"
+    
 
 class Skill(models.Model):
     skill_id = models.AutoField(primary_key=True)
@@ -42,6 +46,9 @@ class Skill(models.Model):
 
     class Meta:
         db_table = "skill"
+    
+    def __str__(self):
+        return self.skill_name
 
 class JobSeekerSkills(models.Model):
     seeker = models.ForeignKey(JobSeekerProfile, on_delete=models.CASCADE)
@@ -50,6 +57,7 @@ class JobSeekerSkills(models.Model):
 
     class Meta:
         db_table = "job_seeker_skills"
+
 
 class SavedJobs(models.Model):
     saved_job_id = models.AutoField(primary_key=True)
