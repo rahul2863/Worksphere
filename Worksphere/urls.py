@@ -20,10 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     #add blank_path in jobseeker.urls
     path('',include('jobseeker.urls')),
     path('employeer/',include('employeer.urls')),
     path('jobseeker/',include('jobseeker.urls')),
-    path('admin/',include('admin.urls')),
+    # path('admin/',include('admin.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

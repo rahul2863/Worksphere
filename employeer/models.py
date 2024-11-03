@@ -16,6 +16,18 @@ class EmployerProfile(models.Model):
     class Meta:
         db_table = "emp_profile"
 
+class JobCategory(models.Model):
+    category_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
+    
+    class Meta:
+        db_table = "job_category"
+        verbose_name_plural = "Job Categories"
+
+    def __str__(self):
+        return self.name
+    
+
 class Job(models.Model):
     job_id = models.AutoField(primary_key=True)
     employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE, default=1)
@@ -27,6 +39,9 @@ class Job(models.Model):
     # Salary range fields
     salary_from = models.BigIntegerField()
     salary_to = models.BigIntegerField()
+    
+    # Add a ForeignKey to JobCategory
+    category = models.ForeignKey(JobCategory, on_delete=models.SET_NULL, null=True, blank=True)
     
     location = models.CharField(max_length=100)
     posted_at = models.DateTimeField(auto_now_add=True)
