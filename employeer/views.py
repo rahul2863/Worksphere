@@ -7,7 +7,10 @@ def empDashboard(request):
     return render(request,'employeer/empdashboard.html',{'title':'Employeer Dashboard'})
 
 def postJob(request):
-    if 'user' in request.session:
-        return render(request,'employeer/postjob.html')
+    if request.method == 'GET':
+        if 'user' in request.session:
+            return render(request,'employeer/postjob.html')
+        else:
+            return redirect('/jobseeker/login')
     else:
-        return redirect('/jobseeker/login')
+        return HttpResponse('Job posted Successful')

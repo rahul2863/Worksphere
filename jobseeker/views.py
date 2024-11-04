@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Skill
-from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job
+from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job,JobCategory
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -68,6 +69,13 @@ def commonRegister(request):
         messages.success(request, "Account created successfully. You can now log in.")
         return redirect('login')
         
-    
-def seekerDashboard(request):
-    return render(request,'jobseeker/seekerdashboard.html',{'title':'Seeker Dashboard'})
+def jobList(request):
+        return render(request,'job-list.html')
+
+def jobDetail(request):
+        return render(request,'job-detail.html')
+
+def showJob(request, id=id):
+    job_category = JobCategory.objects.get(category_id = id)
+    jobs = Job.objects.filter(category = job_category)
+    return render(request,'job-list.html',{'jobs':jobs})

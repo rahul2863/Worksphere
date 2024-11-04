@@ -55,14 +55,15 @@
     <!-- Form Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <form action="/submit-job" method="POST" class="job-post-form">
-        
+            <form method="POST" class="job-post-form">
+                {% csrf_token %}
                 <!-- Job Title -->
                 <div class="form-group mb-3">
                     <label for="jobTitle" class="form-label">Job Title</label>
                     <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
                 </div>
-        
+                
+    
                 <!-- Job Responsibility -->
                 <div class="form-group mb-3">
                     <label for="jobResponsibility" class="form-label">Job Responsibility</label>

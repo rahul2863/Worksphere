@@ -8,7 +8,7 @@ class EmployerProfile(models.Model):
     industry = models.CharField(max_length=100)
     company_size = models.IntegerField()
     company_address = models.CharField(max_length=255)
-    logo = models.URLField(blank=True, null=True)
+    logo = models.ImageField(default='company.jpg', upload_to='Images/company/')
     contact_person = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     deleted = models.BooleanField(default=False)
@@ -16,6 +16,9 @@ class EmployerProfile(models.Model):
     class Meta:
         db_table = "emp_profile"
 
+    def __str__(self):
+        return self.company_name
+    
 class JobCategory(models.Model):
     category_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
@@ -55,6 +58,8 @@ class Job(models.Model):
     class Meta:
         db_table = "job"
 
+    # def __str__(self):
+    #     return str(self.employer)
     
 class JobApplications(models.Model):
     application_id = models.AutoField(primary_key=True)
