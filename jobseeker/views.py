@@ -27,16 +27,22 @@ def commonLogin(request):
         password = request.POST.get('password')
         try:
             user = User.objects.get(email=email)
+            print(user.role,user.name)
         except:
             return redirect(commonRegister)
         else:
             if check_password(password,user.password):
                 request.session['user'] = user.name
-                return render(request,'home.html',{'role':user.role})
+                request.session['user_role'] = user.role
+                return render(request,'home.html',{'user_name':user.name,'role':user.role})
             else:
                 return redirect(commonLogin)
 
-
+def commonLogout(request):
+    if 'user' in request.session:
+        request.session.flush()
+        return redirect('home')
+    
 def commonRegister(request):
     if request.method == "GET":
         return render(request,'register.html')
@@ -68,7 +74,40 @@ def commonRegister(request):
         user.save()
         messages.success(request, "Account created successfully. You can now log in.")
         return redirect('login')
-        
+
+def forgotPassword(request):
+    if request.method == 'GET':
+        return render(request,'forgot_password.html') 
+    else:
+        email = request.POST.get('email')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+
+        if not email or not pass1 or not pass2:
+            return render(request, 'forgot_password.html', {'message': 'All fields are required!'})
+
+        if pass1 != pass2:
+            return render(request, 'forgot_password.html', {'message': 'Passwords do not match!'})
+
+
+        #User.DoesNotExist is an inbuilt exception in Django that is raised when a User object cannot be found in the database.
+        # Explanation:
+        # When you use User.objects.get(email=email), Django attempts to find a user with the given email.
+        # If no matching record is found, Django raises a DoesNotExist exception specific to the User model class.
+        # DoesNotExist exception can be raised for others model as well ,in this case we are finding user with email hence User Model.
+
+        try:
+            user = User.objects.get(email=email)
+            user.password = make_password(pass1)  # This properly hashes the password
+            user.save()  # Save the changes to the database
+            return render(request, 'forgot_password.html', {'message': 'Password Reset Success!!'})
+        except User.DoesNotExist:
+            return render(request, 'forgot_password.html', {'message': 'Please Enter a Valid Email!!'})
+        except Exception as e:
+            # Log the exception if necessary
+            print(e)
+            return render(request, 'forgot_password.html', {'message': 'An error occurred. Please try again later.'})
+
 def jobList(request):
         return render(request,'job-list.html')
 

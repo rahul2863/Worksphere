@@ -13,5 +13,6 @@ urlpatterns = [
     path('contact',views.contactPage,name='contact'),
     path('login',views.commonLogin,name='login'),
     path('register',views.commonRegister,name='register'),
-    
+    path('logout',views.commonLogout,name='logout'),
+    path('forgot_password',views.forgotPassword,name='forgot_password'),
 ]
