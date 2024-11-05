@@ -85,7 +85,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.html" class="dropdown-item">Job Category</a>
+                            <a href="/jobseeker/ShowJobByCategory/" class="dropdown-item">Job Category</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             {%if request.session.user%}
                             <a href="/jobseeker/logout" class="dropdown-item">Logout</a>
@@ -98,7 +98,11 @@
                     </div>
                     <a href="/jobseeker/contact" class="nav-item nav-link">Contact</a>
                 </div>
+                {%if request.session.user_role == 'recruiter' or 'user' not in request.session%}
                 <a href="/employeer/postJob" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+                {%else%}
+                <a href="/jobseeker/applyJob" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Now<i class="fa fa-arrow-right ms-3"></i></a>
+                {%endif%}
             </div>
         </nav>
         <!-- Navbar End -->

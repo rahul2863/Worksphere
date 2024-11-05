@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from jobseeker.models import User,JobSeekerProfile,JobSeekerSkills,SavedJobs,Skill
 from employeer.models import EmployerProfile,JobApplications,JobRequirement,Job,JobCategory
 from django.contrib.auth.hashers import make_password, check_password
@@ -114,7 +114,13 @@ def jobList(request):
 def jobDetail(request):
         return render(request,'job-detail.html')
 
-def showJob(request, id=id):
-    job_category = JobCategory.objects.get(category_id = id)
-    jobs = Job.objects.filter(category = job_category)
-    return render(request,'job-list.html',{'jobs':jobs})
+def showJob(request, id=None):
+    if id is None:
+        return render(request,'category.html')
+    else:
+        try:      
+            job_category = JobCategory.objects.get(category_id = id)
+            jobs = Job.objects.filter(category = job_category)
+            return render(request,'job-list.html',{'jobs':jobs})
+        except:
+             raise Http404("Invalid category ID.")

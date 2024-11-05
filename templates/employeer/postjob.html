@@ -46,6 +46,16 @@
                 <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
             </div>
 
+            <!-- Company Name -->
+            <div class="form-group mb-3">
+                <label for="jobTitle" class="form-label">Company Name</label>
+                <select class="form-control" id="company" name="company" required>
+                    {% for employer in employers%}
+                        <option value="{{employer}}">{{employer}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+
             <!-- Job Responsibility -->
             <div class="form-group mb-3">
                 <label for="jobResponsibility" class="form-label">Job Responsibility</label>
@@ -58,6 +68,16 @@
                 <label for="qualifications" class="form-label">Qualifications</label>
                 <div id="qualifications" style="height: 150px;"></div>
                 <input type="hidden" name="qualificationsContent" id="qualificationsContent">
+            </div>
+
+            <!-- Job Category -->
+            <div class="form-group mb-3">
+                <label for="jobType" class="form-label">Job Category</label>
+                <select class="form-control" id="jobCategory" name="jobCategory" required>
+                    {% for category in categories%}
+                        <option value="{{category}}">{{category}}</option>
+                    {%endfor%}
+                </select>
             </div>
 
             <!-- Salary Range -->

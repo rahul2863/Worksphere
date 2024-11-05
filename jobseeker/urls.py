@@ -4,7 +4,8 @@ from . import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     #add blank_path in jobseeker.urls
-    path('ShowJobByCategory/<int:id>/',views.showJob, name='ShowJobByCategory'),
+    path('ShowJobByCategory/',views.showJob, name='show_job_categories'),
+    path('ShowJobByCategory/<int:id>/',views.showJob, name='show_job_by_category'),
     path('job-list',views.jobList,name='JobList'),
     path('job-detail',views.jobDetail,name='JobList'),
     #Common functionalities for all
