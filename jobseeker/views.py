@@ -34,6 +34,10 @@ def commonLogin(request):
             if check_password(password,user.password):
                 request.session['user'] = user.name
                 request.session['user_role'] = user.role
+
+                #store in session whether the user_profile is complete or not
+                request.session['profile_complete'] = user.profile_complete
+                
                 return render(request,'home.html',{'user_name':user.name,'role':user.role})
             else:
                 return redirect(commonLogin)

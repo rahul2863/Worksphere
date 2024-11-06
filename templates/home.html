@@ -81,9 +81,9 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             {%if request.session.user_role == 'recruiter'%}
-                            <a href="/employeer/view_profile.html" class="dropdown-item">View Profile</a>
+                            <a href="/employeer/empProfile" class="dropdown-item">View Profile</a>
                             {%elif request.session.user_role == 'jobseeker'%}
-                            <a href="/jobseeker/view_profile.html" class="dropdown-item">View Profile</a>
+                            <a href="/jobseeker/seekerProfile.html" class="dropdown-item">View Profile</a>
                             {%endif%}
 
                             {%if request.session.user_role == 'jobseeker'%}

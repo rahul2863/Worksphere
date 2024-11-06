@@ -1,0 +1,80 @@
+{% extends 'contact.html' %}
+
+{% block content %}
+<!-- Header Start -->
+<div class="container-fluid py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Profile</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="/jobseeker/">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+
+
+    <!--Profile Info Start  -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="mb-4 text-center">Complete Your Profile</h1>
+                    {%if message %}<p class="mb-4 text-center">{{ message }}</p>{% endif %}
+                    <form action="/employeer/empProfile" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <label for="name" class="form-label">Company Name</label>
+                                <input type="text" id="name" name="companyname" class="form-control" placeholder="Company Name" required>
+                            </div>  
+
+                            <div class="col-12">
+                                <label for="website" class="form-label">Company Website</label>
+                                <input type="text" id="website" name="website" class="form-control" placeholder="Company Website" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="industry" class="form-label">Industry</label>
+                                <input type="industry" id="industry" name="industry" class="form-control" placeholder="Industry" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="companysize" class="form-label">Company Size</label>
+                                <input type="number" name="companysize" id="companysize" class="form-control" placeholder="Company Size" required>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="profile_image" class="form-label">Logo</label>
+                                <input type="file" id="logo" name="logo" class="form-control" accept="image/*" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="contactperson" class="form-label">Company Person</label>
+                                <input type="text" id="contactperson" name="contactperson" class="form-control" placeholder="Contact Person" required>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="phonenumber" class="form-label">Phone Number</label>
+                                <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Phone Number" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea id="address" name="address" class="form-control" placeholder="Address" rows="3" required></textarea>
+                            </div> 
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary py-2">Submit</button>
+                            </div>
+                        </div>                         
+                    </form>                    
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!-- Profile Info end --> 
+{% endblock %}

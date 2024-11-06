@@ -15,7 +15,7 @@ class User(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    profile_complete = models.BooleanField(default=False)
+    profile_complete = models.IntegerField(default=0)
     last_login = models.DateTimeField(null=True, blank=True)
 
     class Meta:

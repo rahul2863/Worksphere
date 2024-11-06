@@ -4,6 +4,6 @@ from . import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     #add blank_path in jobseeker.urls
-    path('empDashboard',views.empDashboard,name='empdashboard'),
+    path('empProfile',views.empProfile,name='empProfile'),
     path('postJob',views.postJob,name='postJob'),
 ]
