@@ -1,8 +1,8 @@
 from django.db import models
 class User(models.Model):
     ROLE_CHOICES = [
-        ('Job Seeker', 'Job Seeker'),
-        ('Employer', 'Employer'),
+        ('jobseeker', 'jobseeker'),
+        ('recruiter', 'recruiter'),
         ('Admin', 'Admin')
     ]
     user_id = models.AutoField(primary_key=True)
